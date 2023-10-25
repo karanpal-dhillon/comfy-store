@@ -1,6 +1,8 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { About, Error, HomeLayout, Landing, Login, Register } from "./pages";
+import { loader as landingLoader } from './pages/Landing.jsx'
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -10,6 +12,8 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Landing />,
+        loader: landingLoader,
+        errorElement: <Error />
       },
       {
         path: "about",
