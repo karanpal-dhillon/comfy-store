@@ -9,7 +9,6 @@ export const loader = async () => {
 }
 const Landing = () => {
   const featuredProducts = useLoaderData();
-  console.log(featuredProducts.data)
   return (
     <>
       <Hero />
