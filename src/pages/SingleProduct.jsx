@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import SingleProductItem from "../components/SingleProductItem";
 import { customAxios } from "../utils";
 
 export const loader = async ({ params }) => {
@@ -8,10 +8,8 @@ export const loader = async ({ params }) => {
   return { product }
 }
 const SingleProduct = () => {
-  const product = useLoaderData()
-  console.log(product)
   return (
-    <div>SingleProduct</div>
+    <SingleProductItem />
   )
 }
 
