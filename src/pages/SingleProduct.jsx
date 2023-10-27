@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom"
 import { formatPrice } from "../utils";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { generateAmountOptions } from "../utils";
 
 export const loader = async ({ params }) => {
   const { id } = params;
@@ -45,15 +46,18 @@ const SingleProduct = () => {
               }
             </div>
           </div>
-          <div className="mt-4">
-            <label className="label">
-              <span className="label-text">Amount</span>
+          <div className="form-control w-full max-w-xs">
+            <label htmlFor="amount" className="label">
+              <h4 className="text-md font-medium tracking-wide capitalize">Amount</h4>
             </label>
-            <select className="select select-bordered" value={amount} onChange={(e) => setAmount(e.target.value)}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+            <select id="amount" className="select select-bordered select-secondary select-md" value={amount}>
+              {
+                generateAmountOptions(5)
+              }
             </select>
+          </div>
+          <div className="mt-10">
+            <button className="btn btn-md btn-secondary">Add to bag</button>
           </div>
         </div>
       </div>
