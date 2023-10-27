@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <div className="grid lg:grid-cols-2 gap-24 items-center">
       <div>
-        <h1 className="text-4-xl font-bold tracking-tight sm:text-6xl max-w-2xl">
+        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl max-w-2xl">
           We are changing the way people shop.
         </h1>
         <p className="max-w-xl text-lg leading-8 mt-8">
