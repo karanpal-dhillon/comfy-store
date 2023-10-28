@@ -3,9 +3,10 @@ import { customAxios } from "../utils";
 const PRODUCTS_URL = `/products`;
 
 export const loader = async ({ request }) => {
-  const url = new URL(request.url);
-  console.log(url.searchParams.get("search"));
-  const response = await customAxios.get(PRODUCTS_URL);
+  const params = Object.fromEntries([...new URL(request.url).searchParams.entries()])
+  const response = await customAxios.get(PRODUCTS_URL, {
+    params
+  });
   return { products: response.data.data, meta: response.data.meta };
 };
 
