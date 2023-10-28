@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import FormSelect from "./FormSelect";
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import FormRange from "./FormRange";
+import FormCheckbox from "./FormCheckbox";
 
 const sortOptions = ["a-z", "z-a", "high", "low"];
 
@@ -40,37 +42,9 @@ const Filters = () => {
         size="select-sm"
         list={sortOptions}
       />
+      <FormRange label="Select Price" name="price" size="range-sm" />
 
-      <div>
-        <label htmlFor="range" className="label flex justify-between">
-          <p>Select Price</p>
-          <p>${range}</p>
-        </label>
-        <input
-          type="range"
-          min={0}
-          max="10000"
-          value={range}
-          onChange={(e) => setRange(e.target.value)}
-          className="range range-info"
-        />
-        <div className="flex justify-between text-sm font-semibold mt-2">
-          <span>0</span>
-          <span>Max: $1000.00</span>
-        </div>
-      </div>
-
-      <div className="form-control items-center">
-        <label className="cursor-pointer label">
-          <span className="label-text">Free Shipping</span>
-        </label>
-        <input
-          type="checkbox"
-          checked="checked"
-          className="checkbox checkbox-info"
-        />
-      </div>
-
+      <FormCheckbox label="Free Shipping" name="shipping" size="checkbox-sm" />
       <button type="submit" className="btn btn-primary btn-sm">
         Search
       </button>
