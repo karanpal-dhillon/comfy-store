@@ -2,7 +2,6 @@ import { Form } from "react-router-dom";
 import FormInput from "./FormInput";
 import { Link } from "react-router-dom";
 import FormSelect from "./FormSelect";
-import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import FormRange from "./FormRange";
 import FormCheckbox from "./FormCheckbox";
@@ -12,7 +11,6 @@ const sortOptions = ["a-z", "z-a", "high", "low"];
 const Filters = () => {
   const { meta } = useLoaderData();
   const { categories, companies } = meta;
-  const [range, setRange] = useState(0);
 
   return (
     <Form className="bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
@@ -42,6 +40,7 @@ const Filters = () => {
         size="select-sm"
         list={sortOptions}
       />
+
       <FormRange label="Select Price" name="price" size="range-sm" />
 
       <FormCheckbox label="Free Shipping" name="shipping" size="checkbox-sm" />
