@@ -1,13 +1,15 @@
 import { PropTypes } from "prop-types";
-const FormInput = ({ label, type, placeholder, name, defaultValue }) => {
+const FormInput = ({ label, type, placeholder, name, defaultValue, size }) => {
   return (
     <div className="form-control">
-      <label className="label">{label}</label>
+      <label className="label">
+        <span className="label-text"> {label}</span>
+      </label>
       <input
         type={type}
         name={name}
         placeholder={placeholder}
-        className="input input-bordered"
+        className={`input input-bordered ${size}`}
         defaultValue={defaultValue}
       />
     </div>
@@ -20,5 +22,6 @@ FormInput.propTypes = {
   placeholder: PropTypes.string,
   name: PropTypes.string,
   defaultValue: PropTypes.string,
+  size: PropTypes.string,
 };
 export default FormInput;
