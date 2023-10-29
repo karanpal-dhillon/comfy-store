@@ -10,8 +10,7 @@ const sortOptions = ["a-z", "z-a", "high", "low"];
 
 const Filters = () => {
   const { meta, params } = useLoaderData();
-  const { category, company, search, order, price } = params;
-  console.log({ category, company, search, order, price });
+  const { category, company, search, order, price, shipping } = params;
   const { categories, companies } = meta;
 
   return (
@@ -21,12 +20,14 @@ const Filters = () => {
         name="search"
         label="Search Product"
         size="input-sm"
+        defaultValue={search}
       />
       <FormSelect
         name="category"
         label="Select Category"
         size="select-sm"
         list={categories}
+        defaultValue={category}
       />
 
       <FormSelect
@@ -34,18 +35,30 @@ const Filters = () => {
         label="Select Company"
         size="select-sm"
         list={companies}
+        defaultValue={company}
       />
 
       <FormSelect
-        name="sort"
+        name="order"
         label="Sort By"
         size="select-sm"
         list={sortOptions}
+        defaultValue={order}
       />
 
-      <FormRange label="Select Price" name="price" size="range-sm" />
+      <FormRange
+        label="Select Price"
+        name="price"
+        size="range-sm"
+        price={price}
+      />
 
-      <FormCheckbox label="Free Shipping" name="shipping" size="checkbox-sm" />
+      <FormCheckbox
+        label="Free Shipping"
+        name="shipping"
+        size="checkbox-sm"
+        defaultValue={shipping}
+      />
       <button type="submit" className="btn btn-primary btn-sm">
         Search
       </button>
