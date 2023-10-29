@@ -9,7 +9,9 @@ import FormCheckbox from "./FormCheckbox";
 const sortOptions = ["a-z", "z-a", "high", "low"];
 
 const Filters = () => {
-  const { meta } = useLoaderData();
+  const { meta, params } = useLoaderData();
+  const { category, company, search, order, price } = params;
+  console.log({ category, company, search, order, price });
   const { categories, companies } = meta;
 
   return (
