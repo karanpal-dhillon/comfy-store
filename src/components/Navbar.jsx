@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import NavLinks from "./NavLinks";
 import { useState } from "react";
 import { useEffect } from "react";
+import { selectItemsInCart } from "../features/cart/cartSlice";
+import { useSelector } from "react-redux";
+
 const themes = {
   winter: "winter",
   dracula: "dracula",
@@ -12,6 +15,8 @@ const themes = {
 
 const Navbar = () => {
   const [theme, setTheme] = useState(themes.dracula);
+  const numItemsInCart = useSelector((state) => selectItemsInCart(state));
+
   const handleTheme = () => {
     const { winter, dracula } = themes;
     const newTheme = theme === winter ? dracula : winter;
@@ -64,7 +69,7 @@ const Navbar = () => {
             <div className="indicator">
               <BsCart3 className="h-6 w-6" />
               <span className="badge badge-sm badge-primary indicator-item">
-                8
+                {numItemsInCart}
               </span>
             </div>
           </NavLink>

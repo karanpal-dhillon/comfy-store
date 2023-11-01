@@ -9,6 +9,7 @@ import {
   Register,
   Products,
   SingleProduct,
+  Cart,
 } from "./pages";
 // loaders
 import { loader as landingLoader } from "./pages/Landing.jsx";
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
         element: <SingleProduct />,
         loader: singleProductLoader,
         errorElement: <ErrorElement />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
     ],
   },

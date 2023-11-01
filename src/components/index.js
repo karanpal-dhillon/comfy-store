@@ -10,3 +10,6 @@ export { default as Filters } from "./Filters";
 export { default as PaginationContainer } from "./PaginationContainer";
 export { default as ProductsContainer } from "./ProductsContainer";
 export { default as FormSelect } from "./FormSelect";
+export { default as CartItemsList } from "./CartItemsList";
+export { default as CartItem } from "./CartItem";
+export { default as CartTotals } from "./CartTotals";
