@@ -1,5 +1,24 @@
 import { Form, Link } from "react-router-dom";
 import { FormInput, SubmitBtn } from "../components";
+import { customAxios } from "../utils";
+import { redirect } from "react-router-dom";
+import { toast } from "react-toastify";
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData.entries());
+  try {
+    const response = await customAxios.post(`/auth/local/register`, data);
+    console.log(response);
+    return redirect("/login");
+  } catch (error) {
+    const errorMessage =
+      error?.response?.data?.error?.message || "Please check the data again";
+    toast.error(errorMessage);
+    return null;
+  }
+};
+
 const Register = () => {
   return (
     <section className="h-screen grid place-items-center">

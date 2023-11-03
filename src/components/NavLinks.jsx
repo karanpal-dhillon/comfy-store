@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { selectUser } from "../features/user/userSlice";
 
 const links = [
   { id: 1, text: "Home", url: "/" },
@@ -9,9 +11,12 @@ const links = [
   { id: 6, text: "Orders", url: "/orders" },
 ];
 const NavLinks = () => {
+  const user = useSelector((state) => selectUser(state));
   return (
     <>
       {links.map((link) => {
+        if ((link.url === "/checkout" || link.url === "/orders") && !user)
+          return null;
         const { id, text, url } = link;
         return (
           <li key={id}>

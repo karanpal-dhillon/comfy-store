@@ -2,11 +2,11 @@ import { useSelector } from "react-redux";
 import SectionTitle from "../components/SectionTitle";
 import { selectItemsInCart } from "../features/cart/cartSlice";
 import { CartItemsList, CartTotals } from "../components";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { selectUser } from "../features/user/userSlice";
 const Cart = () => {
   const numItemsInCart = useSelector((state) => selectItemsInCart(state));
-  const [user, setUser] = useState(null);
+  const user = useSelector((state) => selectUser(state));
   if (numItemsInCart < 1) {
     return <SectionTitle text="Your cart is empty" />;
   }
