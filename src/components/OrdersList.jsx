@@ -8,7 +8,9 @@ const OrdersList = () => {
   const { orders, meta } = useLoaderData();
   return (
     <div className="mt-8">
-      <h4 className="capitalize mb-4">total orders</h4>
+      <h4 className="capitalize mb-4">
+        total orders : {meta.pagination.total}
+      </h4>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           <thead>
