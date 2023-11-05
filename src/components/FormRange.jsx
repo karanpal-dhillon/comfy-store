@@ -15,6 +15,7 @@ const FormRange = ({ label, name, size, price }) => {
       </label>
       <input
         type="range"
+        id={name}
         className={`range range-primary ${size}`}
         name={name}
         min={0}

@@ -2,11 +2,12 @@ import { PropTypes } from "prop-types";
 const FormSelect = ({ label, name, size, list = [], defaultValue }) => {
   return (
     <div className="form-control">
-      <label htmlFor="name" className="label capitalize">
+      <label htmlFor={name} className="label capitalize">
         <span className="label-text">{label}</span>
       </label>
       <select
         name={name}
+        id={name}
         className={`select select-bordered w-full max-w-xs ${size}`}
         defaultValue={defaultValue}
       >

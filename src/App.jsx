@@ -57,13 +57,13 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <Products />,
-        loader: productsLoader,
+        loader: productsLoader(queryClient),
         errorElement: <ErrorElement />,
       },
       {
         path: "products/:id",
         element: <SingleProduct />,
-        loader: singleProductLoader,
+        loader: singleProductLoader(queryClient),
         errorElement: <ErrorElement />,
       },
       {
@@ -79,7 +79,7 @@ const router = createBrowserRouter([
       {
         path: "orders",
         element: <Orders />,
-        loader: ordersLoader(store),
+        loader: ordersLoader(store, queryClient),
       },
     ],
   },

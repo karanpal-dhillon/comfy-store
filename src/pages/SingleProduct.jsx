@@ -7,12 +7,21 @@ import { generateAmountOptions } from "../utils";
 import { useDispatch } from "react-redux";
 import { addItem } from "../features/cart/cartSlice";
 
-export const loader = async ({ params }) => {
-  const { id } = params;
-  const response = await customAxios.get(`/products/${id}`);
-  const product = response.data.data;
-  return { product };
+const singleProductQuery = (id) => {
+  return {
+    queryKey: ["product", id],
+    queryFn: () => customAxios.get(`/products/${id}`),
+  };
 };
+
+export const loader =
+  (queryClient) =>
+    async ({ params }) => {
+      const { id } = params;
+      const response = await queryClient.ensureQueryData(singleProductQuery(id));
+      const product = response.data.data;
+      return { product };
+    };
 
 const SingleProduct = () => {
   const { product } = useLoaderData();

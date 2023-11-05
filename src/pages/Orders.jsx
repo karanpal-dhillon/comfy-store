@@ -3,8 +3,20 @@ import { ComplexPagination, SectionTitle, OrdersList } from "../components";
 import { redirect } from "react-router-dom";
 import { customAxios } from "../utils";
 
+const ordersQuery = (params, user) => {
+  return {
+    queryKey: ["orders", user.id, params.page ? parseInt(params.page) : 1],
+    queryFn: () =>
+      customAxios.get("/orders", {
+        params,
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }),
+  };
+};
 export const loader =
-  (store) =>
+  (store, queryClient) =>
     async ({ request }) => {
       const user = store.getState().user.user;
       if (!user) {
@@ -16,12 +28,9 @@ export const loader =
       ]);
 
       try {
-        const response = await customAxios.get("/orders", {
-          params,
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const response = await queryClient.ensureQueryData(
+          ordersQuery(params, user),
+        );
         return { orders: response.data.data, meta: response.data.meta };
       } catch (error) {
         const errorResponse =

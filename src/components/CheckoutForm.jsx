@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { redirect } from "react-router-dom";
 
 export const action =
-  (store) =>
+  (store, queryClient) =>
     async ({ request }) => {
       const formData = await request.formData();
       const { name, address } = Object.fromEntries(formData.entries());
@@ -31,6 +31,7 @@ export const action =
             },
           },
         );
+        queryClient.removeQuery(["orders"]);
         store.dispatch(clearCart());
         return redirect("/orders");
       } catch (error) {

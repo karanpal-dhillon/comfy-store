@@ -2,10 +2,11 @@ import { PropTypes } from "prop-types";
 const FormInput = ({ label, type, placeholder, name, defaultValue, size }) => {
   return (
     <div className="form-control">
-      <label className="label">
+      <label className="label" htmlFor={name}>
         <span className="label-text"> {label}</span>
       </label>
       <input
+        id={name}
         type={type}
         name={name}
         placeholder={placeholder}
